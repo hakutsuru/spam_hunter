@@ -85,8 +85,9 @@
       (> (candidate-mean message @state) (:cfg-limit-score-batch @state))
         (swap! state update-in [:reject-count-batch-score] inc)
       :else
-      ;; why bother? while these are window buffer manangement is relatively
-      ;; little work, this work could skipped when a message is rejected
+        ;; check of window spam score could be done in condition
+        ;; but avoid the work of buffer management when most
+        ;; messages will be rejected by earlier testing
         (let [candidate-window (update-window message (:window @state) (:cfg-window-size @state))]
           (if (> (window-mean candidate-window) (:cfg-limit-score-window @state))
             (swap! state update-in [:reject-count-window-score] inc)
