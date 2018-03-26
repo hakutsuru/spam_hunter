@@ -13,10 +13,10 @@ To demonstrate data processing via Clojure, we use Clojure.spec to generate a co
 
 The batch of potential emails must be filtered to ensure emails would not violate any of these spam-related rules...
 
-[1] Only send one email per address.
-[2] Reject any email with spam score higher than 0.3.
-[3] Reject email that boosts average spam score above 0.05 (for sent emails).
-[4] Reject email that boosts average spam score above 0.10 for the last 100 emails. 
+[1] Only send one email per address.<br />
+[2] Reject any email with spam score higher than 0.3.<br />
+[3] Reject email that boosts average spam score above 0.05 (for sent emails).<br />
+[4] Reject email that boosts average spam score above 0.10 for the last 100 emails.
 
 ## Environment
 
