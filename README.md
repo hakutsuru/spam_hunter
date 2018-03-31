@@ -55,3 +55,13 @@ Navigate to batch_process directory...
  :reject-count-window-score 0,
  :batch-id "e3bfe7ab-19bd-4869-998e-04552b76246d"}
 ```
+
+## Critique
+
+Two observations:
+
+[1] Simple calculation of mean score for window of recently sent emails is inefficient (e.g. why sum 100 numbers for every message, when we can adjust a sum as required to account for added and dropped window elements).
+
+[2] An atom reveals intent (indicating *state*), but is intended for managing updates by different threads, and make little sense when running a single thread. Updating an atom is more complicated than other methods, such as `reduce`.
+
+With these critiques, `batch_process` was refactored as `reduce_process`, which should provide similar results. A production solution would depend on how each email should be processed (and required logging).
